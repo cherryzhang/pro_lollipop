@@ -9,9 +9,13 @@ exports.init = function(app, db) {
         res.render('map');
     });
     
+    app.get('/driving', function(req, res){
+        res.render('drivingroute');
+    });
+    
     app.get('/user', function(req, res){
         var collection = db.get('usercollection');
-        collection.find({},{},function(e,docs){ //È¡µÃËùÓÐµÄ¼¯ºÏÊý¾Ý, äÖÈ¾µ½Ò³ÃæÉÏ,¹Ø¼ü×ÖÊÇuserlist
+        collection.find({},{},function(e,docs){ //È¡ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½È¾ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½,ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½userlist
             res.json(docs);
         });
     
