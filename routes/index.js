@@ -1,13 +1,13 @@
 exports.init = function(app, db) {
 
-    // render index page
     app.get('/', function(req, res){
-        res.render('index');
-    });
-    
-    app.get('/map', function(req, res){
         res.render('map');
     });
+    
+    app.get('/route', function(req, res){
+        res.render('drivingroute');
+    });
+    
     
     app.get('/driving', function(req, res){
         res.render('drivingroute');

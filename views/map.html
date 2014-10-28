@@ -1,21 +1,62 @@
 ﻿<!DOCTYPE html>
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-        
+        <link href="http://apps.bdimg.com/libs/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
         <link href="/stylesheets/style.css" rel="stylesheet">
         
+        <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+        <script src="http://apps.bdimg.com/libs/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6bd7GwzcTqRGqSjo447lMTPG"></script>
-        <title>浏览器定位</title>
+        <script src="/js/routeSetting.js"></script>
+        <script src="/js/routeSearch.js"></script>
+        
+        <title>Lollipop Map</title>
     </head>
     <body>
         
         <div id="allmap"></div>
         
-        <div id="toolbar">
-            <span style="padding: 10px"><a href="/?ddd=eee">设置</a><span>
+        <div id="toolbar" class="text-center">
+            <div style="float: left; padding-left: 10px">
+                <span >定位</span>
+            </div>
+            
+            <span id="routeSetting" style="cursor:pointer" >路线<span>
+            
+            <div style="float: right; padding-right: 10px">
+                <span >XXX</span>
+            </div>
         </div>
+        
+        <!--------------------------------setting window----------------------------------------->
+        <div id="settingWindow" style="display:none">
+            <div class="form-group ">
+                <input type="text" id="start" placeholder="起始" ></input>
+            </div>
+            <div class="form-group ">
+                <input type="text" id="end" placeholder="终点" ></input>
+            </div>
+             
+            <div class="form-group ">
+                <input type="checkbox" id="midStop" onchange="enableAddMidPoint(this)"> <span>中途停靠</span></input>
+            </div>
+            
+            <div id="midPointContainer"></div>
+            <div class="form-group ">
+                <div id="addMidPointBtn" class="add_16" ></div>
+            </div>
+            
+            <div class="form-group ">
+                <input type="checkbox" id="excludeHighway" > <span>避开高速</span></input>
+            </div>
+            
+            <button type="button" id="searchBtn" class="btn btn-success btn-sm" style="width:80px">查找</button>
+            <button type="button" id="closeSettingBtn" class="btn btn-default btn-sm" style="width:80px">返回</button>
+
+        </div>
+        <!-----------------------------end---of---setting window--------------------------------->
         
         <script type="text/javascript">
             // 百度地图API功能
@@ -24,17 +65,20 @@
             map.centerAndZoom(point,13);
             map.addControl(new BMap.NavigationControl());
             
-            map.clearOverlays();
-            var start = "世纪公园";
-            var end = "人民广场";
-            var routePolicy = [BMAP_DRIVING_POLICY_LEAST_TIME,BMAP_DRIVING_POLICY_LEAST_DISTANCE,BMAP_DRIVING_POLICY_AVOID_HIGHWAYS];
             
-            search(start,end,routePolicy[0]);
-             
-            function search(start,end,route){ 
-                var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});
-                driving.search(start,end);
+            function init(){
+                $("#routeSetting").bind("click", openSetting);
+                
+                $("#addMidPointBtn").bind("click", addMidPoint);
+                
+                $("#searchBtn").bind("click", searchRoute);
+ 
+                $("#closeSettingBtn").bind("click", closeSetting);
             }
+            
+            
+            init();
+            
             
         </script>
     </body>
