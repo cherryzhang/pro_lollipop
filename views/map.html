@@ -34,9 +34,11 @@
         <div id="settingWindow" style="display:none">
             <div class="form-group ">
                 <input type="text" id="start" placeholder="起始" ></input>
+                <div id="searchResultPanel_start" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
             </div>
             <div class="form-group ">
                 <input type="text" id="end" placeholder="终点" ></input>
+                <div id="searchResultPanel_end" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
             </div>
              
             <div class="form-group ">
@@ -81,10 +83,9 @@
             
             init();
             
-            
-        
-            
-                 
+            setAutoComplete('start', 'searchResultPanel_start');
+            setAutoComplete('end', 'searchResultPanel_end');
+
         </script>
     </body>
 </html>
