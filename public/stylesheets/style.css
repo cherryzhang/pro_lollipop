@@ -11,7 +11,7 @@ body, html,#allmap {
 #toolbar {
     position:absolute; 
     bottom:0; width:100%; 
-    height:35px; 
+    height:30px; 
     background:#ffffff; 
     border-top:1px solid;
 }
@@ -24,7 +24,7 @@ body, html,#allmap {
     height:100%;
     background:-moz-linear-gradient(top, #411428, #c45a70, #fcdebc);
     background:-webkit-gradient(linear, 0 0, 0 bottom, from(#411428), color-stop(0.5,#c45a70), to(#fcdebc));   
-    padding: 25px;
+    padding: 30px;
     color:#ffffff;
 }
 
@@ -41,4 +41,15 @@ body, html,#allmap {
    height: 16px;
    width: 16px;
    display: inline-block;
-  }
+}
+  
+.delete_16 {
+   background-image: url("../images/delete_16.png");
+   height: 16px;
+   width: 16px;
+   display: inline-block;
+   
+   position: absolute; 
+   margin-left: 5px;
+   margin-top: 5px;
+}
