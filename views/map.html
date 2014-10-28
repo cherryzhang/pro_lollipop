@@ -54,7 +54,7 @@
                 <input type="checkbox" id="excludeHighway" > <span>避开高速</span></input>
             </div>
             
-            <button type="button" id="searchBtn" class="btn btn-success btn-sm" style="width:80px">查找</button>
+            <button type="button" id="searchBtn" class="btn btn-success btn-sm" style="width:80px" onclick="search()">查找</button>
             <button type="button" id="closeSettingBtn" class="btn btn-default btn-sm" style="width:80px">返回</button>
 
         </div>
@@ -86,8 +86,9 @@
             
             init();
             
-            
-
+            function search() {
+                searchForDriving(map, $('#start')[0].value, $('#end')[0].value);
+            }
         </script>
     </body>
 </html>

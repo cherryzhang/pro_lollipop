@@ -64,24 +64,25 @@ function setAutoComplete(input, panel) {
         {"input" : input
         ,"location" : map
     });
-    
-    ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
-    var str = "";
-        var _value = e.fromitem.value;
-        var value = "";
-        if (e.fromitem.index > -1) {
-            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-        }    
-        str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
-        
-        value = "";
-        if (e.toitem.index > -1) {
-            _value = e.toitem.value;
-            value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-        }    
-        str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
-        $(panel).innerHTML = str;
-    });
 }
 
-  
+function searchForDriving(map, start, end) {
+    map.clearOverlays();
+
+    var driving = new BMap.DrivingRoute(map,{
+        renderOptions: {
+                map: map,
+                enableDragging : true //起终点可进行拖拽
+            }
+    });
+
+    driving.search(start, end);
+}
+
+function addTrafficControl(map) {
+    var ctrl = new BMapLib.TrafficControl({
+        showPanel: true //是否显示路况提示面板
+    });
+    map.addControl(ctrl);
+    ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT);
+}
