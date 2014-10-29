@@ -95,6 +95,13 @@ function locateCurrentPosition(map){
             var mk = new BMap.Marker(r.point);
             map.addOverlay(mk);
             map.panTo(r.point);
+            
+            var geoc = new BMap.Geocoder();
+            geoc.getLocation(r.point, function(rs){
+                var addComp = rs.addressComponents;
+                var addr = addComp.province + addComp.city + addComp.district + addComp.street + addComp.streetNumber;
+                $("#start").val(addr);
+            });
         }
         else {
             console.log('Locate current position failed '+this.getStatus());
