@@ -88,6 +88,7 @@ function addTrafficControl(map) {
 }
 
 function locateCurrentPosition(map){
+    map.clearOverlays();
     var geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(function(r){
         if(this.getStatus() == BMAP_STATUS_SUCCESS){

@@ -74,6 +74,7 @@
             locateCurrentPosition(map);
             
             function init(){
+                $("#location").bind("click", function(){locateCurrentPosition(map)});
                 $("#routeSetting").bind("click", openSetting);
                 $("#endRouting").bind("click", endCurrentRouting);
                 $("#showParking").bind("click", searchForParking);
