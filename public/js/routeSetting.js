@@ -60,7 +60,7 @@ function getSearchCondition() {
 }
 
 function setAutoComplete(input, panel) {
-    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+    var ac = new BMap.Autocomplete(    
         {"input" : input
         ,"location" : map
     });
@@ -72,7 +72,7 @@ function searchForDriving(map, start, end) {
     var driving = new BMap.DrivingRoute(map,{
         renderOptions: {
                 map: map,
-                enableDragging : true //起终点可进行拖拽
+                enableDragging : true 
             }
     });
 
@@ -81,8 +81,8 @@ function searchForDriving(map, start, end) {
 
 function addTrafficControl(map) {
     var ctrl = new BMapLib.TrafficControl({
-        showPanel: true //是否显示路况提示面板
+        showPanel: true 
     });
     map.addControl(ctrl);
-    ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT);
+    //ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT);
 }
