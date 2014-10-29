@@ -4,6 +4,7 @@ var routeInfo;
 function searchRoute() {
     routeInfo = getSearchCondition();
     
+    saveLastRoute(routeInfo);
     searchForDriving(map, routeInfo.start, routeInfo.end);
     
     closeSetting();

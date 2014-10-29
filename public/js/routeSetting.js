@@ -9,6 +9,7 @@ function openSetting(){
     
     $("#settingWindow").show();
     
+    getLastSavedRoute();
 }
 
 function closeSetting(){
@@ -100,4 +101,18 @@ function locateCurrentPosition(map){
             console.log('Locate current position failed '+this.getStatus());
         }        
     },{enableHighAccuracy: true})
+}
+
+
+function getLastSavedRoute(){
+    $.get("/getRouteInfo",function(result){
+        $("#start").val(result.start);
+        $("#end").val(result.end);
+    })
+    
+}
+
+function saveLastRoute(obj) {
+    $.get( "/saveRouteInfo", obj); 
+
 }
