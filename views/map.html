@@ -71,7 +71,7 @@
             map.addControl(new BMap.NavigationControl());
             map.addControl(new BMap.GeolocationControl());
             addTrafficControl(map);
-            
+            locateCurrentPosition(map);
             
             function init(){
                 $("#routeSetting").bind("click", openSetting);

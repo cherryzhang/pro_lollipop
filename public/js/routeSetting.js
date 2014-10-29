@@ -86,3 +86,17 @@ function addTrafficControl(map) {
     map.addControl(ctrl);
     //ctrl.setAnchor(BMAP_ANCHOR_BOTTOM_RIGHT);
 }
+
+function locateCurrentPosition(map){
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(function(r){
+        if(this.getStatus() == BMAP_STATUS_SUCCESS){
+            var mk = new BMap.Marker(r.point);
+            map.addOverlay(mk);
+            map.panTo(r.point);
+        }
+        else {
+            console.log('Locate current position failed '+this.getStatus());
+        }        
+    },{enableHighAccuracy: true})
+}
