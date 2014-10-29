@@ -4,11 +4,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="http://apps.bdimg.com/libs/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.css" rel="stylesheet" type="text/css" />
         <link href="/stylesheets/style.css" rel="stylesheet">
         
         <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
         <script src="http://apps.bdimg.com/libs/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6bd7GwzcTqRGqSjo447lMTPG"></script>
+        <script type="text/javascript" src="http://api.map.baidu.com/library/TrafficControl/1.4/src/TrafficControl_min.js"></script>
         <script src="/js/routeSetting.js"></script>
         <script src="/js/routeSearch.js"></script>
         
@@ -66,6 +68,8 @@
             var point = new BMap.Point(121.48789,31.24916);
             map.centerAndZoom(point,13);
             map.addControl(new BMap.NavigationControl());
+            map.addControl(new BMap.GeolocationControl());
+            addTrafficControl(map);
             
             
             function init(){
@@ -83,7 +87,6 @@
                 setAutoComplete('start', 'searchResultPanel_start');
                 setAutoComplete('end', 'searchResultPanel_end');
             }
-            
             
             init();
             
