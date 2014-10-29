@@ -20,7 +20,8 @@
         
         <div id="toolbar" class="text-center">
             <div style="float: left; padding-left: 10px">
-                <span id="location">定位</span>
+                <span id="location" style="cursor:pointer" >定位</span>
+                <span id="showParking" style="cursor:pointer; display:none" >显示终点停车场</span>
             </div>
             
             <span id="routeSetting" style="cursor:pointer" >路线</span>
@@ -71,6 +72,7 @@
             function init(){
                 $("#routeSetting").bind("click", openSetting);
                 $("#endRouting").bind("click", endCurrentRouting);
+                $("#showParking").bind("click", searchForParking);
                 
                 $("#addMidPointBtn").bind("click", addMidPoint);
                 
